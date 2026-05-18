@@ -33,7 +33,7 @@ jobs:
 
     # 5. Log in to Docker Hub (ONLY executes when pushing/merging to master)
     - name: Log in to Docker Hub
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -45,7 +45,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        push: ${{ github.ref == 'refs/heads/master' }}
+        push: ${{ github.ref == 'refs/heads/main' }}
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/helloworld-app:latest
           ${{ secrets.DOCKERHUB_USERNAME }}/helloworld-app:${{ github.sha }}
