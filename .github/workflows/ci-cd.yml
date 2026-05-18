@@ -3,7 +3,7 @@ name: Java CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - main
       - 'feature/*' # Triggers on feature/branch-name paths
 
 jobs:
