@@ -3,7 +3,7 @@ name: Java CI/CD Pipeline with SonarCloud
 on:
   push:
     branches:
-      - main
+      - master
       - 'feature/*' # Triggers on feature/branch-name paths
   pull_request:
     types: [opened, synchronize, reopened]
@@ -40,7 +40,7 @@ jobs:
 
     # 5. Log in to Docker Hub (ONLY executes when pushing/merging to main)
     - name: Log in to Docker Hub
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/master'
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -52,7 +52,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        push: ${{ github.ref == 'refs/heads/main' }}
+        push: ${{ github.ref == 'refs/heads/master' }}
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/helloworld-app:latest
           ${{ secrets.DOCKERHUB_USERNAME }}/helloworld-app:${{ github.sha }}
