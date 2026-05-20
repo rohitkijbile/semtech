@@ -8,6 +8,6 @@ on:
 
 jobs:
   trigger-shared-build:
-    uses: rohitkijbile/semtech/.github/workflows/reusable-java-build.yml@v1
+    uses: rohitkijbile/semtech/.github/workflows/reusable-java-build.yml@master
     with:
       java-version: '17'
