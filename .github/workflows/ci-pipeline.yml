@@ -1,0 +1,13 @@
+name: App CI Pipeline reusable
+
+on:
+  push:
+    branches:
+      - master
+      - 'feature/*'
+
+jobs:
+  trigger-shared-build:
+    uses: rohitkijbile/semtech/.github/workflows/reusable-java-build.yml@v1
+    with:
+      java-version: '17'
